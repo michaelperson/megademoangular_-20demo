@@ -1,0 +1,100 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container">
+					<h1 class="display-4">Demo 15 : Les reactives Forms</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container-fluid">
+	<div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    D'abord voyons sous l'angle TWB
+                </div>
+                <div class="card-body">
+                    <label class="form-label">Name : {{name}}</label>
+                    <input type="text" class="form-control" [(ngModel)]="name" />
+
+                    <label class="form-label">Email address : {{email}}</label>
+                    <input type="email" class="form-control" [(ngModel)]="email" />
+
+                    <label class="form-label">Password : {{pass}}</label>
+                    <input type="password" class="form-control" [(ngModel)]="pass" />
+
+                    <label class="form-label">Select gender : {{ gender }}</label>
+                    <select class="form-select" [(ngModel)]="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+				</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Et maintenant la façon Reactive Form
+                </div>
+                <div class="card-body">
+                    <form class="needs-validation" (ngSubmit)="submitForm()" [formGroup]="myForm">
+
+                        <label for="name" class="form-label">Name : {{myForm.value.name}}</label>
+                        <input type="text"  id="name" class="form-control" formControlName="name" />
+
+                        <label for="email" class="form-label">Email address : {{myForm.value.email}}</label>
+                        <input type="email" id="email" class="form-control" formControlName="email"/>
+
+                        <label for="pass" class="form-label">Password : {{myForm.value.pass}}</label>
+                        <input type="password" id="pass" class="form-control" formControlName="pass"/>
+
+                        <label class="form-label">Select gender : {{ myForm.value.gender }}</label>
+                        <select class="form-select" formControlName="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+
+                        <br>
+                        <div *ngIf="!myForm.pristine">
+                            <button type="submit" class="btn btn-primary mb-3">Confirm (pristine)</button>
+                        </div>
+
+                        <div *ngIf="myForm.touched">
+                            <button type="submit" class="btn btn-primary mb-3">Confirm (touched)</button>
+                        </div>
+
+                        <div *ngIf="myForm.invalid">
+                            <button type="submit" class="btn btn-danger mb-3">Confirm (invalid)</button>
+                        </div>
+
+                        <div *ngIf="myForm.valid">
+                            <button type="submit" class="btn btn-primary mb-3">Confirm (valid)</button>
+                        </div>
+                        
+                        <br>
+                        <p *ngIf="myForm.controls.name.valid">Name Valid</p><br>
+                        <p *ngIf="myForm.controls.email.valid">Email Valid</p><br>
+                        <p *ngIf="myForm.controls.pass.valid">Password Valid</p><br>
+                        <p *ngIf="myForm.controls.gender.valid">Gender Valid</p><br>
+                        <br>
+                        
+                    </form>
+                    <button class="btn btn-success" (click)="echoVisu()">Mettre à jour le control visuel dans la console</button>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+

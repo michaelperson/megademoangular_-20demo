@@ -1,0 +1,60 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container">
+					<h1 class="display-4">Demo 10 : Les Input & Output</h1>
+                    <p>
+                        Ou comment faire communiquer parents -> enfants (INPUT) enfant -> parents (OUTPUT) <br>
+                    </p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="container-fluid">
+	<div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Composant Parent ou j'injecte l'enfant par son sélecteur<br>
+                    Pour communiquer de mon parent vers mon enfant, j'injecte ma prop du parents liée à celle de l'enfant par l'intermédiaire de input
+                </div>
+                <div class="card-body">
+                   <app-children-input
+                        [colorChildren]="colorParent" 
+                        [messageChildren]="messageParent"
+                   ></app-children-input><!--colorChildren  etant dans mon enfant je le lui lie color
+                     défini dans mon parent grace au décorateur @Input()-->
+                     <button class="btn btn-warning" (click)="changeColor()">Changer la couleur dans l'enfant</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Composant Enfant ou je vais transférer des élement de mon enfant vers mon parents grave au décorateur Output<br>
+                    Dans l'appel selecteur dans mon parent je vais remettre les event nommé dans l'enfant,
+                    il prendrons cette fois la méthode event du parent, et recevra le $event domme argument qui est l'argument du emit de l'enfant
+                </div>
+                <div class="card-body">
+                    <!-- 
+                        eventerChildren est le nom du output eventEmitter de l'enfant
+                        onParent est le redéclaration du gestionnaire d'event déclanché dans le enfant
+                        $event est l'argument passé depuis l'emitter de l'enfant
+                    -->
+                    <app-children-output
+                        (enterChildren)="onParent($event)" 
+                        (leaveChildren)="onParent($event)"
+                    ></app-children-output>
+                    <p>Message venant de l'enfant vers parent : {{ messageByEnfant }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

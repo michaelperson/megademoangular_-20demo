@@ -1,0 +1,40 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container">
+					<h1 class="display-4">Demo 18 : Le HttpClient</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                   Utilisations du get sur l'api restCountries
+                </div>
+                <div class="card-body">
+                   <table class="table table-hover">
+					   <tr>
+						   <th>Nom</th>
+						   <th>Surface</th>
+						   <th>Population</th>
+					   </tr>
+					    <tr *ngFor="let country of listCountries">
+							<td>{{country.name.official}}</td>
+							<td>{{country.area}}</td>
+							<td>{{country.population }}</td>
+						</tr>
+					</table>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

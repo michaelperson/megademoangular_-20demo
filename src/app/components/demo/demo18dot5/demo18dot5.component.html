@@ -1,0 +1,34 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container">
+					<h1 class="display-4">Demo 18.5 : Le Session Storage</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col align-self-center">
+			<div class="card">
+				<div class="card-header bg-success text-white">
+					Stockage d'information à travers la session de angular
+				</div>
+				<div class="card-body">
+                    <p>Token : {{token}}</p>
+                    <p>User id : {{userId}}</p>
+                    <p>User infos : {{ userInfos | json }}</p>
+				</div>
+                <div class="card-footer">
+                    <button (click)="populateSession()" class="btn btn-success">Remplir la session</button>&nbsp;&nbsp;
+                    <button (click)="removeSession()" class="btn btn-warning">Clear la session one by one</button>&nbsp;&nbsp;
+                    <button (click)="clearSession()" class="btn btn-danger">Clear la session all</button>
+                </div>
+			</div>
+		</div>
+
+	</div>
+</div>

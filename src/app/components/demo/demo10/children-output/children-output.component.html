@@ -1,0 +1,18 @@
+<div class="col align-self-center">
+    <div class="card">
+        <div class="card-header bg-info text-white">
+            Composant enfant<br>
+            Je vais déclancher une fonction dans l'enfant qui va emettre un evenement grace a sont eventEmitter dans son Output
+            il faut ensuite mettre ses event dans le compo enfant sous forme d'event normaux
+        </div>
+        <div class="card-body">
+            <!--
+                ici, mouseenter et mouseleave sont deux event classique qui déclanche une méthode classique rien de neuf
+            -->
+            <p class="alert alert-success" 
+                        (mouseenter)="onEnter()"  
+                        (mouseleave)="onLeave()">
+            Mon super compo Enfant</p>
+        </div>
+    </div>
+</div>

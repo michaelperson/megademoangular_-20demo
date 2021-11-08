@@ -1,0 +1,33 @@
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container">
+					<h1 class="display-4">Demo 11 : Les Services</h1>
+                    <p>
+                        (Injections de Dépendances)
+                    </p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container-fluid">
+	<div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Fake service de connexion | {{ fakeAuth.messageBvn }} <b>{{ fakeAuth.addMsg }}</b><br>
+                    PS : tant que l'app n'est pas rechargée, le services reste actif, il ne se recharge pas.Voyager dans les pages pour voir 
+                </div>
+                <div class="card-body">
+                    <button [ngClass]="classLogin" (click)="login('Bstorm')">Login</button>&nbsp;
+                    <button [ngClass]="classLogout" (click)="logout('Personne !')">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

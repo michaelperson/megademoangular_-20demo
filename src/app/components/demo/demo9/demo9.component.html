@@ -1,0 +1,46 @@
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container">
+					<h1 class="display-4">Demo 9 : Les Directives De composant customs !</h1>
+                    <p>
+                        Directive de composants (NgClass, NgStyle, NgModel) -> Vu ngModel pour le biding two way<br>
+                    </p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container-fluid">
+	<div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Directive de class NgStyle
+                </div>
+                <div class="card-body">
+                    <p [ngStyle]="{'background-color':getColor('UK')}">{{ person.name }} vient bien de {{ person.country }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Directive de style NgClass
+                </div>
+                <div class="card-body">
+                    <p [ngClass]="'alert alert-primary'">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris eros, rutrum vitae ante sed, accumsan dignissim eu risus.</p>
+                    <p [ngClass]="classP">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris eros, rutrum vitae ante sed, accumsan dignissim eu risus.</p>
+                    <p [ngClass]="{'alert alert-primary' : true}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris eros, rutrum vitae ante sed, accumsan dignissim eu risus.</p>
+                    <p [ngClass]="['alert', 'alert-primary']">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris eros, rutrum vitae ante sed, accumsan dignissim eu risus.</p>
+                    <p [ngClass]="getClass('UK')">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris eros, rutrum vitae ante sed, accumsan dignissim eu risus.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

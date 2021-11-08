@@ -1,0 +1,64 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container">
+					<h1 class="display-4">Demo 7 : Les Directives structurelles</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container-fluid">
+	<div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Affichage conditionnel avec le *ngIf
+                </div>
+                <div class="card-body">
+                    <button class="btn btn-success" (click)="OpenClose()">Ouvert ? : {{ isOpen }}</button>
+                    <div *ngIf="isOpen">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eveniet quibusdam accusamus, impedit suscipit aliquid, voluptatum incidunt laboriosam porro doloribus ipsam aperiam sapiente magnam inventore assumenda fugit perspiciatis, facilis omnis.</p>
+                    </div>
+                    
+                </div>
+                <div class="card-footer">
+                    Le ngIf Angular insère ou supprime un élément en fonction d'une condition de true / false
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Le *ngFor représente en angular une boucle normal
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li *ngFor="let item of liste">
+                            {{ item }}
+                        </li>
+                    </ul>
+                    <hr>
+                    <ul>
+                        <li *ngFor="let item of liste; let i = index;" > 
+                            {{ i }} : {{ item }}
+                        </li>
+                    </ul>
+                    <hr>
+                    <ul>
+                        <li *ngFor="let item of liste2 | keyvalue;" > 
+                            {{ item.key }} : {{ item.value }}
+                        </li>
+                    </ul>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+

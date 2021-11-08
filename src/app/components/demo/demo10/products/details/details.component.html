@@ -1,0 +1,9 @@
+<li class="list-group-item">
+    Name : {{productName}} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    Price : {{productPrice}} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    ID : {{productId}} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-danger" (click)="onClickDelete(productId)">Delete</button>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <input class="" [(ngModel)]="newPrice" type="number">
+    <button class="btn btn-warning" (click)="onUpdatePrice()">Update</button>
+</li>
+ 

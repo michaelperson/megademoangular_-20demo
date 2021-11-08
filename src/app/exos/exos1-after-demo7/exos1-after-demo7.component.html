@@ -1,0 +1,75 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container">
+					<h1 class="display-4">Exos 1</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<div class="container-fluid">
+	<div class="row">
+        <div class="col align-self-center">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                   Exercies numéro 1 : Binding et Pipe + Customs + Directives stucturelles
+                </div>
+                <div class="card-body">
+                    <button class="btn btn-primary" data-bs-toggle="collapse" href="#collapseEnonce" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Enoncé
+                    </button>&nbsp;
+                    <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution" aria-expanded="false" aria-controls="collapseExample">
+                        Solution
+                    </button>
+
+                    <hr>
+
+                    <div class="collapse" id="collapseEnonce">
+                        <div class="card card-body">
+                            Sur base des connaissances que vous avez acquise, <br>
+                            Créer un caddie de course qui permettra d'ajouter des courses, de le lister, d'ajouter et de supprimer des choses, <br>
+                            l'heure à laquel il a été ajouté en heure local.<br>
+                            Vous devrez également créer une customs pour permettre de traduire les quantité de produits dans le panier en toute lettre
+                            <b>(PS: le panier peux ne peux contenir que 5 fois un article maximum)</b>
+                        </div>
+                    </div>
+
+                    <div class="collapse" id="collapseSolution">
+                        <div class="card card-body">
+                            <div class="form-group col-4">
+                                <input class="form-control" placeholder="Produit à rajouter" type="text" [(ngModel)]="product"><br>
+                            </div>
+                            <div class="form-group col-4">
+                                <input class="form-control" placeholder="Quantité à rajouter" type="number" [(ngModel)]="qty"><br>
+                            </div>
+                            <button class="col-4 btn btn-success" (click)="addToCart()">Ajouter</button>
+                            <hr>
+                            <p><b>Liste de courses (array)</b></p>
+                            <ul *ngIf="cart[0][0] != null" class="list-group">
+                                <li *ngFor="let item of cart">{{ item[0] }} en {{ item[1] }} exemplaire(s)</li>
+                            </ul>
+                            
+                            <hr><hr>
+
+                            <p><b>Liste de courses (obj)</b></p>
+                            <ul *ngIf="cartObj[0].name != null" class="list-group">
+                                <li *ngFor="let item of cartObj">{{ item.name }} en {{ item.qty }} exemplaire(s)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

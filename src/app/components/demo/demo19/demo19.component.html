@@ -1,0 +1,36 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container">
+					<h1 class="display-4">Demo 19 : Les customs validators asynchrones</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Et maintenant la façon Reactive Form
+                </div>
+                <div class="card-body">
+                    <form class="needs-validation" (ngSubmit)="submitForm()" [formGroup]="myForm">
+
+                        <label for="pays" class="form-label">Country : </label>
+                        <input [ngClass]="validCountry()" type="text" id="pays" class="form-control" formControlName="pays"/>
+                        
+                        <p *ngIf="myForm.controls.pays.valid">Country Valid</p><br>
+                        
+                    </form>
+                    <button class="btn btn-success" (click)="echoVisu()">Mettre à jour le control visuel dans la console</button>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,32 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container">
+					<h1 class="display-4">Demo 0.5 : Propriétés de modèle</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col align-self-center">
+			<div class="card">
+				<div class="card-header bg-success text-white">
+					#Reference
+				</div>
+				<div class="card-body">
+                    <input class="form-control" type="text" #inputTest>
+                    <button class="btn btn-primary" (click)="test(inputTest.value)">click me</button>
+				</div>
+                <div class="card-footer">
+                    Les propriétés de modèle, dans ce cas, ne ce mettra à jour que lorsque que le input.value sera mis à jour, donc il faut un action comme un click button pour le mettre à jour, il sera vu plus tard dans ce cours
+                    <br>PS : la value du input ne se mettre à jour que lors de son envoie par le click button
+                </div>
+			</div>
+		</div>
+
+	</div>
+</div>

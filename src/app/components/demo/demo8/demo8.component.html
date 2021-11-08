@@ -1,0 +1,67 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container">
+					<h1 class="display-4">Demo 8 : Les Directives D'attributs & Customs !</h1>
+                    <p>
+                        Directive de composants (NgClass, NgStyle, NgModel) -> Vu ngModel<br>
+                    </p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<div class="container-fluid">
+	<div class="row">
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Directive d'attribut : Tout les attribut html sont affichable..
+                </div>
+                <div class="card-body">
+                    <p [hidden]="pTag">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris eros, rutrum vitae ante sed, accumsan dignissim eu risus.</p>
+                    <input [disabled]="pTag">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Directive d'attribut Custom
+                </div>
+                <div class="card-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris eros, rutrum vitae ante sed, accumsan dignissim eu risus.</p>
+                    <p appPrepareRender>Duis ac viverra nulla. Proin eleifend odio sed bibendum consequat. Vestibulum ultrices facilisis aliquam.</p>
+                    <p>Maecenas vitae consequat tortor. Phasellus ultrices semper metus lacinia dapibus.</p>
+                    <p appPrepareRender>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris eros, rutrum vitae ante sed, accumsan dignissim nisi. </p>
+                    <p>Praesent eu ante justo. Sed ullamcorper diam sed purus dapibus, et convallis neque vestibulum. Fusce lobortis id sapien in ultricies.</p>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Directive d'attribut custom sur event
+                </div>
+                <div class="card-body">
+                    <p appHighlight>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris eros, rutrum vitae ante sed, accumsan dignissim eu risus.</p>
+                    <p appHighlight>Duis ac viverra nulla. Proin eleifend odio sed bibendum consequat. Vestibulum ultrices facilisis aliquam.</p>
+                    <p appHighlight>Maecenas vitae consequat tortor. Phasellus ultrices semper metus lacinia dapibus.</p>
+                    <p appHighlight>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris eros, rutrum vitae ante sed, accumsan dignissim nisi. </p>
+                    <p appHighlight>Praesent eu ante justo. Sed ullamcorper diam sed purus dapibus, et convallis neque vestibulum. Fusce lobortis id sapien in ultricies.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

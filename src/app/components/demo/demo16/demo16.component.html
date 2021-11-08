@@ -1,0 +1,47 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container">
+					<h1 class="display-4">Demo 16 : Les validators custom</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-header bg-success text-white">
+				Et maintenant la façon Reactive Form
+			</div>
+			<div class="card-body">
+				<form class="needs-validation" (ngSubmit)="submitForm()" [formGroup]="myForm">
+
+					<label for="name" class="form-label">Name : {{myForm.value.name}}</label>
+					<input type="text"  id="name" class="form-control" formControlName="name" />
+
+					<label for="email" class="form-label">Email address : {{myForm.value.email}}</label>
+					<input type="email" id="email" class="form-control" formControlName="email"/>
+
+					<label for="pass" class="form-label">Password : {{myForm.value.pass}}</label>
+					<input type="password" id="pass" class="form-control" formControlName="pass"/>
+
+					<label for="passValidate" class="form-label">Password Validate : {{myForm.value.passValidate}}</label>
+					<input type="text" id="passValidate" class="form-control" formControlName="passValidate"/>
+					<div *ngIf="myForm.errors">
+						<p class="alert alert-danger" *ngIf="myForm.errors.errorTwoPass">{{myForm.errors.errorTwoPass}}</p>
+
+					</div>
+					<p class="alert alert-danger" *ngIf="myForm.controls.name.errors">{{myForm.controls.name.errors.errorName}}</p>
+					<p class="alert alert-danger" *ngIf="myForm.controls.email.errors">{{myForm.controls.email.errors.errorEmail}}</p>
+					<p class="alert alert-danger" *ngIf="myForm.controls.pass.errors">{{myForm.controls.pass.errors.errorPass}}</p>
+
+				</form>
+				<button class="btn btn-success" (click)="echoVisu()">Mettre à jour le control visuel dans la console</button>
+			</div>
+		</div>
+	</div>
+</div>
