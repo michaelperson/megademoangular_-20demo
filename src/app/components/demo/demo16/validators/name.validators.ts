@@ -1,16 +1,27 @@
-import { AbstractControl } from '@angular/forms'
+import { AbstractControl, ValidationErrors } from "@angular/forms";
 
-
-export function NameValidator(control : AbstractControl) : {[key : string] : string}
+export function nameValidator(control : AbstractControl)
 {
+    let error : ValidationErrors
+
     if(control.value)
     {
         if(control.value == "test")
-        return { "errorName" : "Je suis certain que vous ne vous appelez pas 'test'"}
+        {
+            error = { name : "Je suis certain que votre nom n'est pas 'test'" }
+            return error 
+        }
 
         if(control.value.length <= 2)
-            return { "errorName" : "Votre login dois contenir au moins 2 caractères"}
-
+        {
+            error = { name : "Votre nom ne peux pas contenir moins de 3 caractères"}
+            return error
+        }
+        
         return null
+    }
+    else {
+        error = { name : "Champ obligatoire"}
+        return error
     }
 }

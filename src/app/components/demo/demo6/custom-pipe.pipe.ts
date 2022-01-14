@@ -7,13 +7,17 @@ export class CustomPipePipe implements PipeTransform {
 
   transform(value: number): unknown {
 
-    let heures = Math.floor(value/3600);
-    let jours = Math.floor(heures/24);
-    heures = heures - (jours * 24)
-    value = value - (heures * 3600)
+    let jours = Math.floor(value / 86400)
+    value = value - (jours * 86400)
+
+    let heures = Math.floor(value / 3600)
+    value = value - (heures * 3600)  
     
-    let seconds = value % 60;
-    let minutes = Math.floor(value/60);
+    let minutes = Math.floor(value / 60)
+    value = value - (minutes * 60)
+
+    let seconds = value
+
     
 
     //partie stringify

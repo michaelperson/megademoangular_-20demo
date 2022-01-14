@@ -55,6 +55,12 @@
                     
                     <p> {{ var1 }}</p>
                     <p> {{ varPow }}</p>
+
+                    <hr>
+                    Nombre Base : <input type="number" [(ngModel)]="varZak">
+                    Exposant : <input type="number" [(ngModel)]="powZak">
+                    <p>Avant : {{ varZak }}</p>
+                    <p>Après : {{ varZak | customPipe2 : powZak}}</p>
                 </div>
             </div>
         </div>

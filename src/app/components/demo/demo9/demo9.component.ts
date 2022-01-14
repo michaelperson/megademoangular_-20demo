@@ -13,6 +13,15 @@ export class Demo9Component implements OnInit {
     lang : "Swedish meal time"
   }
 
+    //ngStyle
+    persons : any[] = [
+      { name : "Jean charles edouard 1", country : "UK", lang : "Swedish" },
+      { name : "Jean charles edouard 2", country : "USA", lang : "Swedish" },
+      { name : "Jean charles edouard 3", country : "BE", lang : "Swedish" },
+      { name : "Jean charles edouard 4", country : "USA", lang : "Swedish" }
+  
+    ]
+
 
   constructor() { }
 
@@ -24,11 +33,11 @@ export class Demo9Component implements OnInit {
     switch (country)
     {
       case 'UK':
-        return 'green';
+        return 'green'
       case 'USA':
-        return 'blue';
-      case 'HK':
-        return 'red';
+        return 'blue'
+      case 'BE':
+        return 'red'
     }
   }
 
@@ -37,11 +46,13 @@ export class Demo9Component implements OnInit {
     switch (country)
     {
       case 'UK':
-        return 'alert alert-warning';
+        return 'alert alert-warning'
       case 'USA':
-        return 'alert alert-danger';
+        return 'alert alert-danger'
       case 'HK':
-        return 'alert alert-info';
+        return 'alert alert-info'
+      default:
+          return "alert alert-success"
     }
   }
 

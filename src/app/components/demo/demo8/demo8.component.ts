@@ -10,6 +10,12 @@ export class Demo8Component implements OnInit {
 
   pTag : boolean = false
   inputTag : boolean = false
+  mini : number = 10
+  maxi : number = 50
+  first : string = "Loïc"
+  last : string = "Baudoux"
+
+  color : string = "red"
 
   ngOnInit(): void {
   }

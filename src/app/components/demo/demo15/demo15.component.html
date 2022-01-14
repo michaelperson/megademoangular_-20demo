@@ -3,98 +3,92 @@
 		<div class="col">
 			<div class="jumbotron jumbotron-fluid">
 				<div class="container">
-					<h1 class="display-4">Demo 15 : Les reactives Forms</h1>
+					<h1 class="display-4">Demo 15 : Les reactives forms </h1>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
-
 <div class="container-fluid">
-	<div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header bg-info text-white">
-                    D'abord voyons sous l'angle TWB
-                </div>
-                <div class="card-body">
-                    <label class="form-label">Name : {{name}}</label>
-                    <input type="text" class="form-control" [(ngModel)]="name" />
-
-                    <label class="form-label">Email address : {{email}}</label>
-                    <input type="email" class="form-control" [(ngModel)]="email" />
-
-                    <label class="form-label">Password : {{pass}}</label>
-                    <input type="password" class="form-control" [(ngModel)]="pass" />
-
-                    <label class="form-label">Select gender : {{ gender }}</label>
-                    <select class="form-select" [(ngModel)]="gender">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                    </select>
-				</div>
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="row">
-        <div class="col-12">
+
+        <div class="col-12 align-self-center">
             <div class="card">
                 <div class="card-header bg-success text-white">
-                    Et maintenant la façon Reactive Form
+                    Les formulaires en TWB
                 </div>
                 <div class="card-body">
-                    <form class="needs-validation" (ngSubmit)="submitForm()" [formGroup]="myForm">
+                    <label class="form-label">Name : </label>
+                    <input [(ngModel)]="name" type="text" class="form-control">
 
-                        <label for="name" class="form-label">Name : {{myForm.value.name}}</label>
-                        <input type="text"  id="name" class="form-control" formControlName="name" />
+                    <label class="form-label">Email address : </label>
+                    <input [(ngModel)]="email" type="text" class="form-control">
 
-                        <label for="email" class="form-label">Email address : {{myForm.value.email}}</label>
-                        <input type="email" id="email" class="form-control" formControlName="email"/>
+                    <label class="form-label">Password : </label>
+                    <input [(ngModel)]="password" type="password" class="form-control">
 
-                        <label for="pass" class="form-label">Password : {{myForm.value.pass}}</label>
-                        <input type="password" id="pass" class="form-control" formControlName="pass"/>
-
-                        <label class="form-label">Select gender : {{ myForm.value.gender }}</label>
-                        <select class="form-select" formControlName="gender">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
-                        </select>
-
-                        <br>
-                        <div *ngIf="!myForm.pristine">
-                            <button type="submit" class="btn btn-primary mb-3">Confirm (pristine)</button>
-                        </div>
-
-                        <div *ngIf="myForm.touched">
-                            <button type="submit" class="btn btn-primary mb-3">Confirm (touched)</button>
-                        </div>
-
-                        <div *ngIf="myForm.invalid">
-                            <button type="submit" class="btn btn-danger mb-3">Confirm (invalid)</button>
-                        </div>
-
-                        <div *ngIf="myForm.valid">
-                            <button type="submit" class="btn btn-primary mb-3">Confirm (valid)</button>
-                        </div>
-                        
-                        <br>
-                        <p *ngIf="myForm.controls.name.valid">Name Valid</p><br>
-                        <p *ngIf="myForm.controls.email.valid">Email Valid</p><br>
-                        <p *ngIf="myForm.controls.pass.valid">Password Valid</p><br>
-                        <p *ngIf="myForm.controls.gender.valid">Gender Valid</p><br>
-                        <br>
-                        
-                    </form>
-                    <button class="btn btn-success" (click)="echoVisu()">Mettre à jour le control visuel dans la console</button>
-				</div>
+                    <label class="form-label">Select gender : </label>
+                    <select [(ngModel)]="gender" class="form-select">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <br>
+                    <button 
+                        *ngIf="name && email && password && gender"
+                        (click)="sendTwb()" 
+                        class="btn btn-warning"
+                    >Envoyer</button>
+                </div>
             </div>
         </div>
+
+        <div class="col-12 align-self-center">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Les reactives Forms
+                </div>
+                <div class="card-body">
+                    <form class="needs-validation" [formGroup]="myForm">
+                        <label class="form-label">Name : </label>
+                        <input formControlName="name" type="text" class="form-control">
+
+                        <label class="form-label">Email address : </label>
+                        <input formControlName="email" type="text" class="form-control">
+
+                        <label class="form-label">Password : </label>
+                        <input formControlName="password" type="password" class="form-control">
+
+                        <label class="form-label">Select gender : </label>
+                        <select formControlName="gender" class="form-select">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <br>
+                        <button 
+                            *ngIf="myForm.valid"
+                            (click)="sendRf()" 
+                            class="btn btn-warning"
+                        >Envoyer</button>
+                        <br><br><br>
+                        Form Control (abstractControl)
+                        <span *ngIf="myForm.pristine" class="alert alert-info">(pristine)</span>&nbsp;&nbsp;
+                        <span *ngIf="myForm.touched" class="alert alert-info">(touched)</span>&nbsp;&nbsp;
+                        <span *ngIf="myForm.invalid" class="alert alert-info">(invalid)</span>&nbsp;&nbsp;
+                        <span *ngIf="myForm.valid" class="alert alert-info">(valid)</span>
+
+                        <br><br><br>
+                        Form control individual (control)
+                        <span *ngIf="myForm.controls.name.valid" class="alert alert-primary">Name : (valid)</span>&nbsp;&nbsp;
+                        <span *ngIf="myForm.controls.email.valid" class="alert alert-primary">Email : (valid)</span>&nbsp;&nbsp;
+                        <span *ngIf="myForm.controls.password.valid" class="alert alert-primary">Password : (valid)</span>&nbsp;&nbsp;
+                        <span *ngIf="myForm.controls.gender.valid" class="alert alert-primary">Gender (valid)</span>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <hr><hr><hr>
     </div>
 </div>
-

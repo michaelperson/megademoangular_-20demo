@@ -16,5 +16,15 @@ export class LoginGuard implements CanActivate {
     return this.loginService.statusAuth;
 
   }
+
+  canActivateChild() : boolean
+  {
+    return this.loginService.statusAuth;
+  }
+
+  canDeactivate() : boolean
+  {
+    return this.loginService.statusAuth;
+  }
   
 }

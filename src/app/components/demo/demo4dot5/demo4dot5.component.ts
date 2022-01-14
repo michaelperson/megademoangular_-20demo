@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-demo0dot5',
-  templateUrl: './demo0dot5.component.html'
+  selector: 'app-demo4dot5',
+  templateUrl: './demo4dot5.component.html'
 })
-export class Demo0dot5Component implements OnInit {
+
+export class Demo4dot5Component implements OnInit {
 
   constructor() { }
 
@@ -15,5 +16,4 @@ export class Demo0dot5Component implements OnInit {
   {
     alert(ref)
   }
-
 }

@@ -1,20 +1,21 @@
-import { AbstractControl } from '@angular/forms'
+import { AbstractControl, ValidationErrors } from "@angular/forms";
 
-
-export function EmailValidator(control : AbstractControl) : {[key : string] : string}
+export function emailValidator(control : AbstractControl)
 {
+    let error : ValidationErrors
+
     if(control.value)
     {
-        if(control.value == "t@t.b")
-        return { "errorEmail" : "Je suis certain que cette email n'existe pas..."}
-
-        if(control.value.length <= 6)
-            return { "errorEmail" : "Votre email dois contenir au moins 6 caractères"}
-
+        if(control.value.length <= 5)
+        {
+            error = { email : "Votre email ne peux pas contenir moins de 6 caractères"}
+            return error
+        }
+        
         return null
     }
-    
-
-
-    return null
+    else {
+        error = { email : "Champ obligatoire"}
+        return error
+    }
 }

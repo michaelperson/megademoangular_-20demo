@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { generateMyForm } from './forms/myForm15.form';
 
 @Component({
   selector: 'app-demo15',
@@ -7,45 +8,34 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class Demo15Component implements OnInit {
 
-  public name : string = ""
-  public email : string = ""
-  public pass : string = ""
-  public gender : string = ""
+  name : string = undefined
+  email : string = undefined
+  password : string = undefined
+  gender : string = undefined
 
-  /*reactive form */
-  public myForm : FormGroup
+  myForm : FormGroup
 
-  constructor(private fb : FormBuilder) { }
+  constructor(private fb : FormBuilder) {
+  }
 
   ngOnInit(): void {
-    this.generateForm()
+    this.myForm = generateMyForm(this.fb)
+
   }
 
-
-  generateForm()
+  sendTwb()
   {
-    this.myForm = this.fb.group(
-      {
-        name : ["", [Validators.required, Validators.minLength(2), Validators.maxLength(20)], [/* validation asynchrone */]],
-        email : ["", [Validators.required, Validators.email], [/* validation asynchrone */]],
-        pass : ["", [Validators.required, Validators.minLength(2), Validators.maxLength(20)], [/* validation asynchrone */]],
-        gender : ["", [Validators.required], [/* validation asynchrone */]]
-      },
-      {
-        /* validator : validateurs de groupe form */
-      }
-    )
+    console.log(this.name)
+    console.log(this.email)
+    console.log(this.password)
+    console.log(this.gender)
   }
 
-
-  submitForm()
+  sendRf()
   {
-      console.log(this.myForm)
+    console.log(this.myForm.valid)
+    console.log(this.myForm.controls.name.valid)
   }
 
-  echoVisu()
-  {
-    console.log(this.myForm)
-  }
 
 }

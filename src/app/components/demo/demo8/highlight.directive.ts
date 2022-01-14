@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 @Directive({
   selector: '[appHighlight]'
@@ -8,22 +8,26 @@ export class HighlightDirective {
   constructor(private el : ElementRef) { }
 
 
-  @HostListener('mouseenter')
-  onMouseEnter() //le nom de la méthode n'a que peu d'importance..
+  @Input() appHighlight
+  @Input() defaultColor
+
+  @HostListener("mouseenter") 
+  onMouseEnter()
   {
-    this.el.nativeElement.style.backgroundColor = "yellow"
+    this.el.nativeElement.style.backgroundColor = this.appHighlight
   }
 
-  @HostListener("click")
-  onClick()
-  {
-    this.el.nativeElement.style.backgroundColor = "red"
-  }
-
-  @HostListener('mouseleave')
+  @HostListener("mouseleave")
   onMouseLeave()
   {
     this.el.nativeElement.style.backgroundColor = null
+  }
+
+  @HostListener("click")
+  onMouseClick()
+  {
+    this.el.nativeElement.style.backgroundColor = this.defaultColor
+    this.el.nativeElement.style.color = "red"
   }
 
  

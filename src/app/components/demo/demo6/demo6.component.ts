@@ -10,6 +10,8 @@ export class Demo6Component implements OnInit {
   public maVarPiper2 : number = 42000
   public var1 : number
   public varPow : number
+  varZak : number = undefined
+  powZak : number = undefined
   
   constructor() {
     this.var1 = 42

@@ -3,45 +3,76 @@
 		<div class="col">
 			<div class="jumbotron jumbotron-fluid">
 				<div class="container">
-					<h1 class="display-4">Demo 16 : Les validators custom</h1>
+					<h1 class="display-4">Demo 16 : Les customs validators </h1>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
+<div class="container-fluid">
+    <div class="row">
 
-<div class="row">
-	<div class="col-12">
-		<div class="card">
-			<div class="card-header bg-success text-white">
-				Et maintenant la façon Reactive Form
-			</div>
-			<div class="card-body">
-				<form class="needs-validation" (ngSubmit)="submitForm()" [formGroup]="myForm">
+        <div class="col-12 align-self-center">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Validation custom<br>
+                    les directives de composantes ngMdoel, ngClass, ngStyle, seront appelée à chaque changement d'un input par exemple
+                </div>
+                <div class="card-body">
+                    <form class="needs-validation" [formGroup]="myForm">
+                        <label class="form-label">Name : </label>
+                        <input [ngClass]="validateName()" formControlName="name" type="text" class="form-control">
+                        <ng-container *ngIf="myForm.controls.name.touched">
+                            <p *ngIf="myForm.controls.name.errors" class="alert alert-danger">
+                                {{myForm.controls.name.errors.name}}
+                            </p>
+                        </ng-container>
+                       
 
-					<label for="name" class="form-label">Name : {{myForm.value.name}}</label>
-					<input type="text"  id="name" class="form-control" formControlName="name" />
 
-					<label for="email" class="form-label">Email address : {{myForm.value.email}}</label>
-					<input type="email" id="email" class="form-control" formControlName="email"/>
+                        <label class="form-label">Email address : </label>
+                        <input [ngClass]="validateEmail()" formControlName="email" type="text" class="form-control">
+                        <ng-container *ngIf="myForm.controls.email.touched">
+                            <p *ngIf="myForm.controls.email.errors" class="alert alert-danger">
+                                {{myForm.controls.email.errors.email}}
+                            </p>
+                        </ng-container>
 
-					<label for="pass" class="form-label">Password : {{myForm.value.pass}}</label>
-					<input type="password" id="pass" class="form-control" formControlName="pass"/>
+                        <label class="form-label">Password : </label>
+                        <input [ngClass]="validatePassword()" formControlName="password" type="password" class="form-control">
 
-					<label for="passValidate" class="form-label">Password Validate : {{myForm.value.passValidate}}</label>
-					<input type="text" id="passValidate" class="form-control" formControlName="passValidate"/>
-					<div *ngIf="myForm.errors">
-						<p class="alert alert-danger" *ngIf="myForm.errors.errorTwoPass">{{myForm.errors.errorTwoPass}}</p>
+                        <label class="form-label">Password verify : </label>
+                        <input [ngClass]="validatePasswordVerify()" formControlName="passwordVerify" type="password" class="form-control">
+                        <ng-container *ngIf="myForm.controls.passwordVerify.touched">
+                            <p *ngIf="myForm.errors" class="alert alert-danger">
+                                {{myForm.errors.twoPasswordCheck}}
+                            </p>
+                        </ng-container>
 
-					</div>
-					<p class="alert alert-danger" *ngIf="myForm.controls.name.errors">{{myForm.controls.name.errors.errorName}}</p>
-					<p class="alert alert-danger" *ngIf="myForm.controls.email.errors">{{myForm.controls.email.errors.errorEmail}}</p>
-					<p class="alert alert-danger" *ngIf="myForm.controls.pass.errors">{{myForm.controls.pass.errors.errorPass}}</p>
+                        <br>
+                        <button 
+                            *ngIf="myForm.valid"
+                            (click)="sendRf()" 
+                            class="btn btn-warning"
+                        >Envoyer</button>
+                        <br><br><br>
+                        Form Control (abstractControl)
+                        <span *ngIf="myForm.pristine" class="alert alert-info">(pristine)</span>&nbsp;&nbsp;
+                        <span *ngIf="myForm.touched" class="alert alert-info">(touched)</span>&nbsp;&nbsp;
+                        <span *ngIf="myForm.invalid" class="alert alert-info">(invalid)</span>&nbsp;&nbsp;
+                        <span *ngIf="myForm.valid" class="alert alert-info">(valid)</span>
 
-				</form>
-				<button class="btn btn-success" (click)="echoVisu()">Mettre à jour le control visuel dans la console</button>
-			</div>
-		</div>
-	</div>
+                        <br><br><br>
+                        Form control individual (control)
+                        <span *ngIf="myForm.controls.name.valid" class="alert alert-primary">Name : (valid)</span>&nbsp;&nbsp;
+                        <span *ngIf="myForm.controls.email.valid" class="alert alert-primary">Email : (valid)</span>&nbsp;&nbsp;
+                        <span *ngIf="myForm.controls.password.valid" class="alert alert-primary">Password : (valid)</span>&nbsp;&nbsp;
+                        <span *ngIf="myForm.controls.passwordVerify.valid" class="alert alert-primary">Password V (valid)</span>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <hr><hr><hr>
+    </div>
 </div>

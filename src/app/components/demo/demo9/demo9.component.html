@@ -20,10 +20,11 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header bg-success text-white">
-                    Directive de class NgStyle
+                    Directive de style NgStyle
                 </div>
                 <div class="card-body">
-                    <p [ngStyle]="{'background-color':getColor('UK')}">{{ person.name }} vient bien de {{ person.country }}</p>
+                    <p [ngStyle]="{'background-color':getColor(person.country)}">{{ person.name }} vient bien de {{ person.country }}</p>
+                    <p *ngFor="let item of persons" [ngStyle]="{'background-color' : getColor(item.country)}">{{ item.name }} : {{ item.lang }} </p>
                 </div>
             </div>
         </div>
@@ -31,7 +32,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header bg-success text-white">
-                    Directive de style NgClass
+                    Directive de class NgClass
                 </div>
                 <div class="card-body">
                     <p [ngClass]="'alert alert-primary'">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris eros, rutrum vitae ante sed, accumsan dignissim eu risus.</p>

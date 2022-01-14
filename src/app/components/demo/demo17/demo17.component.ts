@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SomethingService } from './services/something.service';
+import { FakeLogin17Service } from './services/fake-login17.service';
 
 @Component({
   selector: 'app-demo17',
@@ -7,56 +7,84 @@ import { SomethingService } from './services/something.service';
 })
 export class Demo17Component implements OnInit {
 
+  isConnect : boolean = undefined
+  simpleOfResponse : number
+  simpleFromResponse : string
+  simpleIntervalResponse : number
 
-  var1 : string = ""
-  var2 : string = ""
+  myString1 : string = undefined
+  myString2 : string = undefined
 
-  secondes : number = 0
-  singleResp : number = 0
-  singleRespPipe : number = 0
-  fromResp : any
-
-  constructor(private someService : SomethingService) { }
+  constructor(private loginServ : FakeLogin17Service) {
+    this.isConnect = this.loginServ.isConnect
+  }
 
   ngOnInit(): void {
-
-    
-
-    this.someService.singleResp.subscribe((value) => {
-      this.singleResp = value
+    this.loginServ.simpleOf$.subscribe((value) => {
+      this.simpleOfResponse = value
     })
 
-    this.someService.singleRespPipe.subscribe((value) => {
-      this.singleRespPipe = value
-    })
-
-
-    this.someService.fromResp.subscribe((value) => {
+    this.loginServ.simpleFrom$.subscribe((value) => {
       console.log(value)
-      this.fromResp = value
+      this.simpleFromResponse = value
     })
 
-    this.someService.counter.subscribe((value) => {
-      this.secondes = value
+    this.loginServ.simpleInterval$.subscribe((value) => {
+      this.simpleIntervalResponse = value
     })
 
 
-    this.someService.var1$.pipe().subscribe(
-      (value) => { this.var1 = value }
-    )
+    this.loginServ.mySubject$.subscribe((value) => {
+      console.log(value)
+      this.isConnect = value
+    })
 
-    this.someService.var2$.pipe().subscribe(
-      (value) => { this.var2 = value }
-    )
 
-    
+    this.loginServ.myVar1$.subscribe((value) => {
+      this.myString1 = value
+    })
+
+    this.loginServ.myVar2$.subscribe((value) => {
+      this.myString2 = value
+    })
+
+
   }
 
-
-  fakeLogin()
+  ngOnDestroy()
   {
-    this.someService.emitLogin()
+    this.loginServ.mySubject$.unsubscribe()
+    this.loginServ.myVar1$.unsubscribe()
+    this.loginServ.myVar2$.unsubscribe()
+    console.log("destroy")
   }
 
+  login()
+  {
+    this.loginServ.login()
+  }
+
+  logout()
+  {
+    this.loginServ.logout()
+  }
+
+  emitOf(nb : number)
+  {
+    this.loginServ.reEmitOf(nb)
+
+    this.loginServ.simpleOf$.subscribe((value) => {
+      this.simpleOfResponse = value
+    })
+
+  }
+
+
+  emitSub()
+  {
+    this.loginServ.emitMyString()
+  }
+
+ 
 
 }

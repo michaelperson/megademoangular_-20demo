@@ -22,11 +22,14 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header bg-success text-white">
-                    Directive d'attribut : Tout les attribut html sont affichable..
+                    Directive d'attribut : Tout les attribut html sont touchable..
                 </div>
                 <div class="card-body">
                     <p [hidden]="pTag">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris eros, rutrum vitae ante sed, accumsan dignissim eu risus.</p>
                     <input [disabled]="pTag">
+                    <input type="range" [max]="maxi" [min]="mini">
+                    <input type="text" class="form-control" [value]="first + ' ' + last">
+
                 </div>
             </div>
         </div>
@@ -55,7 +58,7 @@
                     Directive d'attribut custom sur event
                 </div>
                 <div class="card-body">
-                    <p appHighlight>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris eros, rutrum vitae ante sed, accumsan dignissim eu risus.</p>
+                    <p  [appHighlight]="color" defaultColor="yellow">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris eros, rutrum vitae ante sed, accumsan dignissim eu risus.</p>
                     <p appHighlight>Duis ac viverra nulla. Proin eleifend odio sed bibendum consequat. Vestibulum ultrices facilisis aliquam.</p>
                     <p appHighlight>Maecenas vitae consequat tortor. Phasellus ultrices semper metus lacinia dapibus.</p>
                     <p appHighlight>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris eros, rutrum vitae ante sed, accumsan dignissim nisi. </p>

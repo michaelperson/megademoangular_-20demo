@@ -10,75 +10,71 @@
 	</div>
 </div>
 
-
 <div class="container-fluid">
-	<div class="row">
+    <div class="row">
 
-        <div class="col-12">
+        <div class="col-12 align-self-center">
             <div class="card">
-                <div class="card-header bg-info text-white">
-                    Les Observables de type of (le plus simple)
+                <div class="card-header bg-success text-white">
+                    Observable of()
                 </div>
                 <div class="card-body">
-                    <p>Réponse simple : {{ singleResp }}</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header bg-info text-white">
-                    Les Observables de type of avec opérateurs
-                </div>
-                <div class="card-body">
-                    <p>Réponse simple : {{ singleRespPipe }}</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header bg-info text-white">
-                    Les Observables de type from (le plus simple)
-                </div>
-                <div class="card-body">
-                    <p>Réponse from : {{ fromResp }}</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header bg-info text-white">
-                    Les Observables de type interval
-                </div>
-                <div class="card-body">
-                    <p>Secondes : {{ secondes }}</p>
+                    {{simpleOfResponse}}
+                    <button class="btn btn-primary" (click)="emitOf(1556)">Changer la valeur émise par le of()</button>
                 </div>
             </div>
         </div>
 
 
-
-        <div class="col-12">
+        <div class="col-12 align-self-center">
             <div class="card">
-                <div class="card-header bg-info text-white">
-                    Les Observables de type Subject et BehaviorSubject
+                <div class="card-header bg-success text-white">
+                    Observable from()
                 </div>
                 <div class="card-body">
-                    <p>ma var 1 du service something : {{ var1 }}</p>
-                    <p>ma var 2 du service something : {{ var2 }}</p>
-                    <br>
-                    <button class="btn btn-success" (click)="fakeLogin()">fake login observables</button>
-                </div>
-                <div class="card-footer">
-                    les observables sont des variable sur laquel on va pouvoir souscrir un abonnement
-                chaque modification apportée a l'observée, sera impacter directement dans l'observeur
+                    {{simpleFromResponse}}
                 </div>
             </div>
         </div>
 
 
+        <div class="col-12 align-self-center">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Observable interval()
+                </div>
+                <div class="card-body">
+                    {{simpleIntervalResponse}}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 align-self-center">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Fake service de connexion<br>
+                    State : {{isConnect}}
+                </div>
+                <div class="card-body">
+                    <button *ngIf="!isConnect" class="btn btn-success" (click)="login()">Login</button>
+                    <button *ngIf="isConnect" class="btn btn-danger" (click)="logout()">Logout</button>
+                    <button *ngIf="!isConnect" class="btn btn-primary">Create Account</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-12 align-self-center">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                   Res de Subject : {{myString1}}<br>
+                   Res de Behavior Subject :  {{myString2}}
+                </div>
+                <div class="card-body">
+                    <button class="btn btn-success" (click)="emitSub()">Emettre les sujets</button>
+                </div>
+            </div>
+        </div>
         
     </div>
 </div>

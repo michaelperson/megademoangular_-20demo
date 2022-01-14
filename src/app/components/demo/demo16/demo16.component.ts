@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { EmailValidator } from './validators/email.validators';
-import { NameValidator } from './validators/name.validators';
-import { PasswordValidator } from './validators/password.validators';
-import { TwoPasswordValidator } from './validators/twoPasswordValidate.validators';
+import { generateMyForm } from './forms/myForm16.form';
 
 @Component({
   selector: 'app-demo16',
@@ -11,38 +8,71 @@ import { TwoPasswordValidator } from './validators/twoPasswordValidate.validator
 })
 export class Demo16Component implements OnInit {
 
+  name : string = undefined
+  email : string = undefined
+  password : string = undefined
+  gender : string = undefined
+
   myForm : FormGroup
 
-  constructor(private fb : FormBuilder) { }
+  constructor(private fb : FormBuilder) {
+  }
 
   ngOnInit(): void {
-    this.generateForm()
+    this.myForm = generateMyForm(this.fb)
+
   }
 
-  generateForm()
+  validateName()
   {
-    this.myForm = this.fb.group(
+    if(this.myForm.controls.name.value != "")
+    {
+      if(this.myForm.controls.name.invalid)
       {
-        name : ["", [NameValidator]],
-        email : ["", [EmailValidator]],
-        pass : ["", [PasswordValidator]],
-        passValidate : ["", [PasswordValidator]]
-
-      },
-      {
-        validators : TwoPasswordValidator
+        return "is-invalid"
       }
-    )
+      return "is-valid"
+    }
   }
 
-  echoVisu()
+  validateEmail()
   {
-    console.log(this.myForm)
+    if(this.myForm.controls.email.value != "")
+    {
+      if(this.myForm.controls.email.invalid)
+      {
+        return "is-invalid"
+      }
+      return "is-valid"
+    }
   }
 
-
-  submitForm()
+  validatePassword()
   {
-    console.log(this.myForm)
+    if(this.myForm.controls.password.value != "")
+    {
+      if(this.myForm.controls.password.invalid)
+      {
+        return "is-invalid"
+      }
+      return "is-valid"
+    }
   }
+
+  validatePasswordVerify()
+  {
+    if(this.myForm.controls.passwordVerify.value != "")
+    {
+      if(this.myForm.errors)
+      {
+        if(this.myForm.errors.twoPasswordCheck)
+        {
+          return "is-invalid"
+        }
+      }
+      return "is-valid"
+      
+    }
+  }
+
 }

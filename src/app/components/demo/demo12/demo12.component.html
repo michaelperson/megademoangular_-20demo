@@ -1,39 +1,37 @@
-
 <div class="container-fluid">
 	<div class="row">
 		<div class="col">
 			<div class="jumbotron jumbotron-fluid">
 				<div class="container">
-					<h1 class="display-4">Demo 12 : Les Promesses</h1>
-                    <p>
-                        (Injections de Dépendances)
-                    </p>
+					<h1 class="display-4">Demo 12 : Les promesses</h1>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
-
 <div class="container-fluid">
-	<div class="row">
-        <div class="col-12">
+    <div class="row">
+
+        <div class="col-12 align-self-center">
             <div class="card">
                 <div class="card-header bg-success text-white">
-                    Fake service avec promesse<br>
+                    Fake service avec promesse
                 </div>
                 <div class="card-body">
-                    <button class='btn btn-info' (click)="simple()">Simple</button>&nbsp;
-                    <button class='btn btn-info' (click)="simple2()">Simple 2</button>&nbsp;
-                    <button class='btn btn-info' (click)="all()">All</button>&nbsp;
-                    <button class='btn btn-info' (click)="race()">Race</button>&nbsp;
+                    <button (click)="simple()" class="btn btn-info">Simple</button>&nbsp;&nbsp;
+                    <button (click)="simple2()" class="btn btn-info">Simple 2</button>&nbsp;&nbsp;
+                    <button (click)="all()" class="btn btn-info">All</button>&nbsp;&nbsp;
+                    <button (click)="race()" class="btn btn-info">Race</button>
                     <br>
-                    <p>Return du Simple : {{ fakePromise.messageSimple }}</p>
-                    <p>Return du Simple2 : {{ fakePromise.messageSimple2 }}</p>
-                    <p>Return du All : {{ fakePromise.messageAll }}</p>
-                    <p>Return du Race : {{ fakePromise.messageRace }}</p>
+                    <p>Return Simple : {{simpleMessage}}</p>
+                    <p>Return Simple 2 : {{simple2Message}}</p>
+                    <p>Return All : {{allMessage}}</p>
+                    <p>Return Race : {{raceMessage}}</p>
+                    
                 </div>
             </div>
         </div>
+        
     </div>
 </div>

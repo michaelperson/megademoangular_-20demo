@@ -1,0 +1,33 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container">
+					<h1 class="display-4">Demo 21 : Le Routage</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-9 align-self-center">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                </div>
+                <div class="card-body">
+
+                    <button (click)="navigate()" class="btn btn-success">Naviguer vers demo 1</button>
+                    <button (click)="navigateParams()" class="btn btn-danger">Naviguer vers demo 20 mais avec params</button>
+                    <button (click)="navigateQuery()" class="btn btn-warning">Naviguer vers demo 20 mais avec queryParams</button>
+                    <p *ngIf="myParams">{{myParams}}</p>
+                    <p *ngIf="myQuery">{{myQuery}}</p>
+                </div>
+            </div>
+        </div>
+       
+        
+    </div>
+</div>

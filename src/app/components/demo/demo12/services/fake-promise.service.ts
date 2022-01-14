@@ -6,146 +6,76 @@ import { promise } from 'selenium-webdriver';
 })
 export class FakePromiseService {
   
-  public messageSimple : string = ""
-  public messageSimple2 : string = ""
-  public messageAll : string = ""
-  public messageAllSettled : string = ""
-  public messageRace : string = ""
-  public messageAny : string = ""
+  constructor() {
+  }
 
+  simple() : Promise<string>{
 
-  constructor() { }
-
-  simple()
-  {
-    new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       setTimeout(() => {
-
-        resolve('Yeah je suis resolved !')
+        resolve("resolved")
       }, 1500)
-
-      setTimeout(() => {
-        reject('Yeah je suis reject... !')
-      }, 4000)
-    })
-    .then((value : string) => {
-      this.messageSimple = value
-    })
-    .catch((error : string) => {
-      this.messageSimple = error
     })
   }
 
-  simple2()
-  {
-    const promise1 = new Promise((resolve, reject) => {
-      setTimeout(() => {
+  simple2() : Promise<unknown>{
 
-        resolve('Yeah je suis resolved !')
+    let myPromise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("Resolved")
       }, 1500)
-
-      setTimeout(() => {
-        reject('Yeah je suis reject... !')
-      }, 4000)
-    })
-    
-    promise1.then((value : string) => {
-      this.messageSimple2 = value
     })
 
-    promise1.catch((error : string) => {
-      this.messageSimple2 = error
-    })
+    return myPromise
     
   }
 
+  all() : Promise<any>{
 
-  all()
-  {
-    const promiseAll1 = new Promise((resolve, reject) => {
+    let myPromise1 = new Promise((resolve, reject) => {
       setTimeout(() => {
+        resolve("Resolved 1")
+      }, 500)
+    })
 
-        resolve('Yeah je suis resolved !')
+    let myPromise2 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("Resolved 2")
       }, 1500)
+    })
 
+    let myPromise3 = new Promise((resolve, reject) => {
       setTimeout(() => {
-        reject('Yeah je suis reject... !')
+        resolve("Resolved 3")
       }, 4000)
     })
 
-    const promiseAll2 = new Promise((resolve, reject) => {
-      setTimeout(() => {
+    return Promise.all([myPromise1, myPromise2, myPromise3])
 
-        resolve('Yeah je suis resolved !')
-      }, 1500)
 
-      setTimeout(() => {
-        reject('Yeah je suis reject... !')
-      }, 4000)
-    })
-
-    const promiseAll3 = new Promise((resolve, reject) => {
-      setTimeout(() => {
-
-        resolve('Yeah je suis resolved !')
-      }, 1500)
-
-      setTimeout(() => {
-        reject('Yeah je suis reject... !')
-      }, 4000)
-    })
-    
-    Promise.all([promiseAll1, promiseAll2, promiseAll3])
-    .then((value) => {
-      this.messageAll = "Yeah je suis resolved Promise all"
-    })
-    .catch((err) => {
-      this.messageAll = "Yeah je suis reject Promise all"
-    })
   }
 
-  race()
-  {
-    const promiseRace1 = new Promise((resolve, reject) => {
-      setTimeout(() => {
+  race() : Promise<any>{
 
-        resolve('Yeah je suis resolved !')
+    let myPromise1 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("Resolved 1")
       }, 1500)
-
-      setTimeout(() => {
-        reject('Yeah je suis reject... !')
-      }, 4000)
     })
 
-    const promiseRace2 = new Promise((resolve, reject) => {
+    let myPromise2 = new Promise((resolve, reject) => {
       setTimeout(() => {
+        resolve("Resolved 2")
+      }, 500)
+    })
 
-        resolve('Yeah je suis resolved !')
+    let myPromise3 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("Resolved 3")
       }, 1500)
-
-      setTimeout(() => {
-        reject('Yeah je suis reject... !')
-      }, 4000)
     })
 
-    const promiseRace3 = new Promise((resolve, reject) => {
-      setTimeout(() => {
-
-        resolve('Yeah je suis resolved !')
-      }, 1500)
-
-      setTimeout(() => {
-        reject('Yeah je suis reject... !')
-      }, 4000)
-    })
-    
-    Promise.race([promiseRace1, promiseRace2, promiseRace3])
-    .then((value) => {
-      this.messageRace = "Yeah je suis resolved Promise race"
-    })
-    .catch((err) => {
-      this.messageRace = "Yeah je suis reject Promise race"
-    })
+    return Promise.race([myPromise1, myPromise2, myPromise3])
   }
 
 }
